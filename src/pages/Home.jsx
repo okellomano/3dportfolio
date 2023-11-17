@@ -1,4 +1,4 @@
-import { Suspense, useState } from 'react'
+import { Suspense, useState } from 'react';
 
 import { Canvas } from '@react-three/fiber';
 import Loader from '../components/Loader';
@@ -13,17 +13,19 @@ const Home = () => {
   const [currentStage, setCurrentStage] = useState(1);
 
   const adjustIslandForScreenSize = () => {
-    let screenScale = null;
-    let screenPosition = [0, -6.5, -43];
+    let screenScale, screenPosition;
+    
     let rotation = [0.1, 4.7, 0];
 
-    if(window.innerWidth < 785) {
+    if(window.innerWidth < 768) {
       screenScale = [0.9, 0.9, 0.9];
+      screenPosition = [0, -6.5, -43.4];
     } else {
       screenScale = [1, 1, 1];
+      screenPosition = [0, -6.5, -43.4];
     }
 
-    return [screenScale, screenPosition, rotation]
+    return [screenScale, screenPosition]
   }
 
   const adjustPlaneForScreenSize = () => {
@@ -40,7 +42,7 @@ const Home = () => {
     return [screenScale, screenPosition]
   }
 
-  const [islandScale, islandPosition, islandRotation] = adjustIslandForScreenSize();
+  const [islandScale, islandPosition] = adjustIslandForScreenSize();
   const [planeScale, planePosition] = adjustPlaneForScreenSize();
 
   return (
@@ -64,11 +66,11 @@ const Home = () => {
           <Sky 
             isRotating={isRotating}
           />
-          
+
           <Island 
             position={islandPosition}
             scale={islandScale}
-            rotation={islandRotation}
+            rotation={[0.1, 4.7077, 0]}
             isRotating={isRotating}
             setIsRotating={setIsRotating}
             setCurrentStage={setCurrentStage}
@@ -77,7 +79,7 @@ const Home = () => {
             isRotating={isRotating}
             planeScale={planeScale}
             planePosition={planePosition}
-            rotation={[0, 20, 0]}
+            rotation={[0, 20.1, 0]}
           />
         </Suspense>
       </Canvas>
