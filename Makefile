@@ -27,3 +27,6 @@ animate:
 
 email:
 	@npm install @emailjs/browser
+
+vertical-timeline:
+	@npm install react-vertical-timeline-component
