@@ -24,3 +24,6 @@ drei:
 
 animate:
 	@npm install @react-spring/three
+
+email:
+	@npm install @emailjs/browser
